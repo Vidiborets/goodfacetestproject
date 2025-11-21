@@ -12,7 +12,7 @@ import IconChevronRight from '@/src/features/layout/assets/icons/chevron-right.s
 
 const SidebarInner = () => (
   <div className="flex h-full flex-col bg-white">
-    <div className="px-4 pt-2.5 pb-2">
+    <div className="px-4 pt-2.5 pb-2 max-md:hidden">
       <div className="mb-2.5 flex items-center justify-between">
         <div className="flex h-8 w-[58px] items-center justify-center rounded-md text-[24px] font-medium text-grey-800">
           Logo
@@ -147,7 +147,7 @@ const Sidebar = () => {
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="flex flex-col gap-1 rounded-sm border border-grey-300 bg-white px-2 py-1 text-grey-800"
+            className="flex flex-col gap-1 rounded-sm border-grey-300 bg-white px-2 py-1 text-grey-800"
             aria-label="Open navigation"
           >
             <IconBurger className="size-6" aria-hidden="true" />
@@ -155,10 +155,17 @@ const Sidebar = () => {
         </div>
       </header>
 
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/30 md:hidden"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
       <div
         className={classNames(
-          'fixed inset-y-0 left-0 z-40 w-[280px] bg-white shadow-lg transition-transform duration-200 md:hidden border-r border-grey-200',
-          isOpen ? 'translate-x-0' : '-translate-x-full',
+          'fixed inset-y-0 right-0 z-40 w-full max-w-[280px] bg-white shadow-lg transition-transform duration-200 md:hidden border-l border-grey-200',
+          isOpen ? 'translate-x-0' : 'translate-x-full',
         )}
       >
         <div className="flex items-center justify-between border-b border-grey-200 px-4 py-3">

@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 
 export class Model {
-  quantity: number = 0;
+  quantity: number = 99;
   plan: string = '3';
   location: string = '';
 
@@ -31,7 +31,11 @@ export class Model {
   }
 
   get total() {
-    return this.quantity * this.pricePerIp;
+    if (this.plan === '12') {
+      return this.quantity * this.pricePerIp * 0.8;
+    } else {
+      return this.quantity * this.pricePerIp;
+    }
   }
 
   get subscriptionLabel() {

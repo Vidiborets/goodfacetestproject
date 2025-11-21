@@ -6,7 +6,7 @@ import type { ReactNode } from 'react';
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex min-h-screen bg-grey-50 text-grey-900">
+    <div className="flex max-md:flex-col min-h-screen bg-grey-50 text-grey-900">
       <Sidebar />
 
       <OrderStoreProvider>
